@@ -10,20 +10,28 @@ client.connect()
         //Close the database connection
         //client.close();
 
+        
         var dbo = client.db('nodemongo');
-        /*dbo.createCollection('customers').then(function(){
+
+        /*
+        dbo.createCollection('customers').then(function(){
         console.log("Collection created!");
         //Close the database connection
         client.close();
-        })*/
+        })
+        */
+        
 
-        /*var custData = { name: "Westcliff", address: "Irvine, CA"};
+        /*
+        var custData = { name: "Westcliff", address: "Irvine, CA"};
         dbo.collection("customers").insertOne(custData).then(function() {
             console.log("1 document inserted")
             client.close()
-        })*/ 
+        })
+        */
        
-        /*var custData = [
+        /* 
+        var custData = [
             { name: 'John', address: 'Highway 71'},
             { name: 'Peter', address: 'Lowstreet 4'},
             { name: 'Amy', address: 'Apple st 652'},
@@ -39,47 +47,61 @@ client.connect()
             { name: 'Chuck', address: 'Main Road 989'},
             { name: 'Viola', address: 'Sideway 1633'}
         ];
-        dbo.collection('customer').insertMany(custData).then(function(res) {
+        dbo.collection('customers').insertMany(custData).then(function(res) {
             console.log("Number of documents inserted:" + res.insertedCount);
             client.close();
-        })*/
+        })
+        */
 
-        /*dbo.collection('customers').findOne({}).then(function(res) {
+        // In-Class Demo -> Find
+        /*   
+        dbo.collection('customers').findOne({}).then(function(res) {
             console.log(res.name);
             client.close();
-        })*/
+        })
+        */
 
-        /*var query = {address: "Park Lane 38"}
+        // In-Class Demo -> Filter
+        /*
+        var query = {address: "Park Lane 38"}
         dbo.collection('customers').find(query)
             .toArray()
             .then(items => {
                 console.log(`Successfully found ${items.length} documents.`)
                 console.log(items);
                 client.close();
-        })*/
+            })
+        */        
 
-       /*var mysort = {name: 1}
-       dbo.collection('customers').find()
+        // In-Class Demo -> Sort
+        /*
+        var mysort = {name: 1}
+        dbo.collection('customers').find()
             .sort(mysort)
             .toArray()
             .then(items => {
                 console.log(`Successfully sorted ${items.length} documents.`)
                 console.log(items);
                 client.close()
-        })*/
+        })
+        */
 
-        /*var myquery = {address: 'Mountain 21'}
+        // In-Class Demo -> Delete
+        /*
+        var myquery = {address: 'Mountain 21'}
         dbo.collection('customers').deleteOne(myquery).then(function() {
             console.log("1 document deleted");
             client.close();
-        })*/
+        })
+        */
 
+        // In-Class Demo -> Update
         var myquery = {address: 'Valley 345'};
         var newvalues = {$set: {name: "Mickey", address: "Canyon 123"}};
         dbo.collection('customers').updateOne(myquery, newvalues).then(function() {
             console.log("1 document updated");
             client.close();
         })
-    })
 
+    })
     .catch(error => console.log ('Failed to connect', error))
